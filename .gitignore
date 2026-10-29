@@ -23,5 +23,4 @@ package-lock.json
 .DS_Store
 
 # Local bundler install
-vendor/
 .bundle/
