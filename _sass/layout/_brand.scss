@@ -1,0 +1,149 @@
+/* ==========================================================================
+   BRANDED PAGES (employer tabs)
+   Enabled per page via front matter: brand + brand_logo
+   ========================================================================== */
+
+$tochka-purple: #7b4dff;
+$tochka-purple-dark: #5a2fe0;
+$tbank-yellow: #ffdd2d;
+$tbank-yellow-dark: #ffcd00;
+$tbank-ink: #333333;
+
+.page--brand {
+  min-height: 70vh;
+  padding: 2em 2em 2.5em;
+  border-radius: 16px;
+  margin-bottom: 2em;
+
+  .page__inner-wrap > header {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5em;
+    margin-bottom: 1.5em;
+  }
+
+  /* Keep the role on one line while it fits (the logo gives up space first);
+     a title too long for the row wraps evenly instead of overflowing */
+  .page__brand-heading {
+    flex: 0 0 auto;
+    max-width: calc(100% - 120px - 1.5em); // always leave room for the logo
+  }
+
+  .page__title {
+    margin: 0;
+    font-size: 1.35em;
+    line-height: 1.15;
+    text-wrap: balance;
+    overflow-wrap: break-word; // a long word never runs under the logo
+
+    @media (max-width: $x-large - 1px) {
+      font-size: 1.2em;
+    }
+  }
+
+  .page__brand-period {
+    margin: 0.4em 0 0;
+    font-size: $type-size-5;
+    opacity: 0.85;
+  }
+
+  .page__brand-logo {
+    flex: 0 1 auto;
+    min-width: 120px;
+    width: auto;
+    max-width: 50%;
+    height: 44px;
+    object-fit: contain;
+  }
+
+  .page__content h2 {
+    border-bottom-color: currentColor;
+  }
+
+  .page__content h3 {
+    color: inherit;
+  }
+
+  .brand-photo {
+    display: block;
+    max-width: 420px;
+    margin: 1.25em 0 0;
+
+    img {
+      width: 100%;
+      border-radius: 12px;
+      box-shadow: 0 8px 24px rgba(#000, 0.25);
+    }
+
+    figcaption {
+      margin-top: 0.6em;
+      color: inherit;
+      font-family: inherit;
+      font-size: $type-size-6;
+      opacity: 0.85;
+    }
+  }
+
+  @media (max-width: $medium) {
+    padding: 1.5em 1.25em 2em;
+
+    .page__inner-wrap > header {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 1em;
+    }
+
+    .page__brand-heading {
+      flex: 1 1 auto;
+      max-width: none;
+    }
+
+    .page__title {
+      white-space: normal;
+    }
+
+    .page__brand-logo {
+      max-width: 65%;
+      height: 32px;
+    }
+  }
+}
+
+.page--tochka {
+  background: linear-gradient(135deg, $tochka-purple 0%, $tochka-purple-dark 100%);
+
+  &,
+  .page__title,
+  .page__brand-period,
+  .page__content,
+  .page__content a {
+    color: #fff;
+  }
+}
+
+.page--tbank {
+  background: linear-gradient(135deg, $tbank-yellow 0%, $tbank-yellow-dark 100%);
+
+  &,
+  .page__title,
+  .page__brand-period,
+  .page__content,
+  .page__content a {
+    color: $tbank-ink;
+  }
+
+  .page__brand-logo {
+    height: 52px;
+
+    @media (max-width: $medium) {
+      height: 36px;
+    }
+  }
+}
+
+/* Let long sidebar lines (e.g. the university name) wrap instead of being cut off */
+.author__urls li {
+  white-space: normal;
+}
